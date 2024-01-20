@@ -1,16 +1,29 @@
 import { getServerSession } from 'next-auth'
 import React from 'react'
-import { Loginoptions } from '../api/auth/[...nextauth]/route'
+import { Loginoptions } from '../../api/auth/[...nextauth]/route'
 import { redirect } from 'next/navigation'
 import Image from 'next/image'
 import UsernameForm from '@/forms/UsernameForm'
+import { Page } from '@/models/Page'
+import mongoose from 'mongoose'
 
 const AccountPage = async (req) => {
 
     const session = await getServerSession(Loginoptions)
 
     if (!session) {
-        redirect('/')
+        return redirect('/')
+    }
+
+    mongoose.connect(process.env.MONGODB_URI)
+    const pageInfoWithEmail = await Page.findOne({ owner: session?.user?.email })
+
+    if (pageInfoWithEmail) {
+        return (
+            <div>
+                your page is {pageInfoWithEmail?.uri}
+            </div>
+        )
     }
 
     return (
@@ -20,7 +33,7 @@ const AccountPage = async (req) => {
                 <div className="flex justify-center items-center w-[60%] flex-col gap-3">
                     <p className="text-7xl w-[80%] font-extrabold text-purple-700 mb-10">Get started with Linkerrr Account.</p>
                     <p className="text-lg w-[80%] text-purple-500">Get Started with Linkerrr with this username. This will be your identity to the world.</p>
-                    <UsernameForm user_name={req?.searchParams?.username}/>
+                    <UsernameForm user_name={req?.searchParams?.username} />
                 </div>
 
                 <div className="flex justify-center items-center w-[40%] pr-10">

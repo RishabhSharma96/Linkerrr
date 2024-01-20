@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react'
 const HeroForm = ({ user_name }) => {
 
     const [username, setUsername] = useState("")
+
     const router = useRouter()
 
     useEffect(() => {
@@ -35,8 +36,7 @@ const HeroForm = ({ user_name }) => {
 
     return (
         <form className="w-[80%]">
-            <span className="pl-3 pt-[1.1rem] pb-[1.1rem] bg-white text-lg text-purple-900 rounded-l-lg font-bold">linkerrr.to/
-            </span>
+            <span className="pl-3 pt-[1.1rem] pb-[1.1rem] bg-white text-lg text-purple-900 rounded-l-lg font-bold">linkerrr.to/</span>
             <input
                 type="text"
                 placeholder="linkerrrID"

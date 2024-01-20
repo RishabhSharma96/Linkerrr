@@ -15,7 +15,7 @@ const UsernameForm = ({user_name}) => {
         }
         else{
             setIsUsernameTaken(false)
-            redirect(`/account/${user_name}`)
+            redirect(`/account?created=${formData.get("username")}`)
         }
     }
 
@@ -30,8 +30,8 @@ const UsernameForm = ({user_name}) => {
                 className="h-[3.5rem] outline-none text-lg text-purple-900 w-[200px] font-bold"
                 defaultValue={user_name}
             />
-            <button type="submit" className="h-[3.5rem] bg-purple-700 text-white font-bold w-[12rem] text-lg rounded-r-lg hover:bg-white hover:text-purple-700 : hover:border-purple-700 hover:border-2 transition-all">Claim my linkerrr</button><br />
-            {isUsernameTaken && <span className='text-red-600 mt-2'>This username is aldready taken*</span>}
+            <button type="submit" className="h-[3.5rem] bg-purple-700 text-white font-bold w-[12rem] text-lg rounded-r-lg hover:bg-white hover:text-purple-700 : hover:border-purple-700 hover:border-2 transition-all mb-2">Claim my linkerrr</button><br />
+            {isUsernameTaken && <span className='text-red-600'>This username is aldready taken*</span>}
         </form>
     )
 }

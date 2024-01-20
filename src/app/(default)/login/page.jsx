@@ -1,9 +1,19 @@
 import Image from 'next/image'
 import React from 'react'
-import {signIn} from "next-auth/react"
+import { signIn } from "next-auth/react"
 import LoginButton from '@/components/LoginButton'
+import { getServerSession } from 'next-auth'
+import { Loginoptions } from '@/app/api/auth/[...nextauth]/route'
+import { redirect } from 'next/navigation'
 
 const LoginPage = () => {
+
+    // const session = getServerSession(Loginoptions)
+
+    // if (session) {
+    //     return redirect('/account')
+    // }
+
     return (
         <div className="h-[91vh] w-full bg-gray-200 flex items-center justify-center">
 
@@ -22,7 +32,7 @@ const LoginPage = () => {
                     <Image src="/images/LinkerrrLogo.png" width={250} height={250} alt="Company logo" />
                 </div>
                 <span className="text-purple-700 font-bold text-lg flex justify-center items-center">Linkerrr works seemingly fast with Google Accounts</span>
-                <LoginButton/>
+                <LoginButton />
             </div>
         </div >
     )

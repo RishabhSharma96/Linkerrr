@@ -1,7 +1,7 @@
 import HeroForm from "@/forms/HeroForm";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
-import { Loginoptions } from "./api/auth/[...nextauth]/route";
+import { Loginoptions } from "../api/auth/[...nextauth]/route";
 
 export default async function Home() {
 
@@ -13,7 +13,7 @@ export default async function Home() {
 
         <div className="flex justify-center items-center w-[60%] flex-col gap-3">
           <p className="text-7xl w-[80%] font-extrabold text-purple-700">Flaut what you are. In one, with simple link in bio.</p>
-          <p className="text-lg w-[80%] text-purple-500">Simplify your digital footprint - one link, endless possibilities. Connect with on Instagram, TikTok, Twitter, YouTube, and more for a curated experience.</p>
+          <p className="text-lg w-[80%] text-purple-500 ">Simplify your digital footprint - one link, endless possibilities. Connect with on Instagram, TikTok, Twitter, YouTube, and more for a curated experience.</p>
           <HeroForm user_name={session?.user} />
         </div>
 

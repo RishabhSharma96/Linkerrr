@@ -6,7 +6,11 @@ const PageSchema = new Schema({
         type: String,
         unique: true,
         required: true,
-    }
+    },
+    owner: {
+        type: String,
+        reqired: true,
+    },
 
 }, { timestamps: true })
 
