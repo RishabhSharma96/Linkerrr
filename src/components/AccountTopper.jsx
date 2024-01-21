@@ -1,32 +1,41 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import RadioButtons from './RadioButtons'
 import Image from 'next/image'
 import UpdateUserDetails from '@/actions/UpdateUserDetails'
 
 const AccountTopper = ({ page, session }) => {
 
+    const [bgType, setBgType] = useState(page.bgType)
+    const [bgColor, setBgColor] = useState(page.bgColor)
+
     const saveUserDatails = async (formData) => {
         const username = formData.get('username')
         const userlocation = formData.get('location')
         const userbio = formData.get('bio')
+        const userbgType = bgType
+        const usercolor = bgColor
 
-        await UpdateUserDetails(username, userlocation, userbio)
+        await UpdateUserDetails(username, userlocation, userbio, userbgType, usercolor)
     }
 
     return (
         <div className=''>
 
             <form action={saveUserDatails} className='p-4 bg-gray-200'>
-                <div className='w-full h-[16rem] bg-gray-400 p-3'>
+                <div className={'w-full h-[16rem] p-3'} style={{backgroundColor: bgColor}}>
                     <RadioButtons
+                        defaultValue={bgType}
+                        onChange={val => setBgType(val)}
                         options={[
                             { value: "Color", label: "Color" },
                             { value: "Image", label: "Image" }
                         ]}
-                        onChange={() => { }}
                     />
+                    {bgType === 'Color' && <div className='flex items-center mt-2'>
+                        <input type="color" className='w-[9rem]' name="userbgcolor" onChange={e => setBgColor(e.target.value)} defaultValue={bgColor}/>
+                    </div>}
                 </div>
                 <div className='flex justify-center'>
                     <Image className='rounded-full relative -top-20 overflow-hidden border-4' src={session?.user?.image} height={150} width={150} alt='profileimage' />

@@ -5,15 +5,11 @@ import { Page } from "@/models/Page"
 import mongoose from "mongoose"
 import { getServerSession } from "next-auth"
 
-const UpdateUserDetails = async (username, userlocation, userbio) => {
+const UpdateUserDetails = async (username, userlocation, userbio, userbgType, usercolor) => {
 
     mongoose.connect(process.env.MONGODB_URI)
 
     const session = await getServerSession(Loginoptions)
-
-    console.log(username)
-    console.log(userlocation)
-    console.log(userbio)
 
     if (session) {
         await Page.updateOne({
@@ -21,7 +17,9 @@ const UpdateUserDetails = async (username, userlocation, userbio) => {
         }, {
             name: username,
             location: userlocation,
-            bio: userbio
+            bio: userbio,
+            bgType: userbgType,
+            bgColor: usercolor
         })
         return true;
     }

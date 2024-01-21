@@ -1,6 +1,6 @@
 import React from 'react'
 
-const RadioButtons = ({ options, defaultValue, onChange }) => {
+const RadioButtons = ({ options, defaultValue , onChange}) => {
     return (
         <div className="radio-togglers shadow">
             {options.map(option => (
@@ -8,7 +8,7 @@ const RadioButtons = ({ options, defaultValue, onChange }) => {
                     <input
                         type="radio"
                         name="bgType"
-                        onClick={ev => onChange(ev.target.value)}
+                        onClick={e => onChange(e.target.value)}
                         defaultChecked={defaultValue === option.value}
                         value={option.value} />
                     <div>

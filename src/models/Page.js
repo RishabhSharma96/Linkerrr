@@ -22,6 +22,14 @@ const PageSchema = new Schema({
     location: {
         type: String,
         default: ""
+    },
+    bgType: {
+        type: String,
+        default: "Color"
+    },
+    bgColor: {
+        type: String,
+        default: "#808080"
     }
 
 }, { timestamps: true })
