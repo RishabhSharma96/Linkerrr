@@ -5,7 +5,7 @@ import { Page } from "@/models/Page"
 import mongoose from "mongoose"
 import { getServerSession } from "next-auth"
 
-const UpdateUserDetails = async (username, userlocation, userbio, userbgType, usercolor) => {
+const UpdateUserDetails = async (username, userlocation, userbio, userbgType, usercolor, imageURL) => {
 
     mongoose.connect(process.env.MONGODB_URI)
 
@@ -19,7 +19,8 @@ const UpdateUserDetails = async (username, userlocation, userbio, userbgType, us
             location: userlocation,
             bio: userbio,
             bgType: userbgType,
-            bgColor: usercolor
+            bgColor: usercolor,
+            bgImageUrl: imageURL
         })
         return true;
     }

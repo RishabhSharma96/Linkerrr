@@ -30,6 +30,10 @@ const PageSchema = new Schema({
     bgColor: {
         type: String,
         default: "#808080"
+    },
+    bgImageUrl: {
+        type: String,
+        default: ""
     }
 
 }, { timestamps: true })

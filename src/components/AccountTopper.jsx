@@ -4,11 +4,13 @@ import React, { useState } from 'react'
 import RadioButtons from './RadioButtons'
 import Image from 'next/image'
 import UpdateUserDetails from '@/actions/UpdateUserDetails'
+import axios from 'axios'
 
 const AccountTopper = ({ page, session }) => {
 
     const [bgType, setBgType] = useState(page.bgType)
     const [bgColor, setBgColor] = useState(page.bgColor)
+    const [imageURL , setImageUrl] = useState(page.bgImageUrl)
 
     const saveUserDatails = async (formData) => {
         const username = formData.get('username')
@@ -17,14 +19,35 @@ const AccountTopper = ({ page, session }) => {
         const userbgType = bgType
         const usercolor = bgColor
 
-        await UpdateUserDetails(username, userlocation, userbio, userbgType, usercolor)
+        await UpdateUserDetails(username, userlocation, userbio, userbgType, usercolor, imageURL)
+    }
+
+    const HandleFileUpload = async (e) => {
+
+        const files = e.target.files;
+        const formData = new FormData();
+
+        for (const file of files) {
+            formData.append("file", file);
+            formData.append("upload_preset", process.env.NEXT_PUBLIC_UPLOAD_PRESET)
+        }
+
+        const data = await axios.post(process.env.NEXT_PUBLIC_CLOUDINARY_URL,
+            formData
+        ).then((response) => {
+            setImageUrl(response?.data?.secure_url)
+        }).catch((error) => {
+            console.error("Error: ", error);
+        })
     }
 
     return (
         <div className=''>
 
             <form action={saveUserDatails} className='p-4 bg-gray-200'>
-                <div className={'w-full h-[16rem] p-3'} style={{backgroundColor: bgColor}}>
+                <div className={'w-full h-[16rem] p-3 bg-gray-400 bg-cover bg-center'} style={
+                    bgType === 'Color' ? { backgroundColor: bgColor } : {backgroundImage: `url(${imageURL})`}
+                }>
                     <RadioButtons
                         defaultValue={bgType}
                         onChange={val => setBgType(val)}
@@ -34,7 +57,12 @@ const AccountTopper = ({ page, session }) => {
                         ]}
                     />
                     {bgType === 'Color' && <div className='flex items-center mt-2'>
-                        <input type="color" className='w-[9rem]' name="userbgcolor" onChange={e => setBgColor(e.target.value)} defaultValue={bgColor}/>
+                        <input type="color" className='w-[8.9rem]' name="userbgcolor" onChange={e => setBgColor(e.target.value)} defaultValue={bgColor} />
+                    </div>}
+                    {bgType === 'Image' && <div className='flex items-center mt-2'>
+                        <label className='w-[8.9rem] bg-white h-[1.5rem] flex justify-center font-bold text-purple-900 cursor-pointer'>Upload Image
+                            <input type="file" className='hidden' onChange={HandleFileUpload} />
+                        </label>
                     </div>}
                 </div>
                 <div className='flex justify-center'>
