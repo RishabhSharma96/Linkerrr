@@ -18,12 +18,10 @@ const GrabUsername = async (formData) => {
         return false;
     }
     else {
-        const pageDoc = await Page.create({
+        return await Page.create({
             uri: linkerrrUsername,
             owner: session?.user?.email
         })
-        console.log(pageDoc)
-        return JSON.parse(JSON.stringify(pageDoc))
     }
 }
 

@@ -11,6 +11,18 @@ const PageSchema = new Schema({
         type: String,
         reqired: true,
     },
+    name: {
+        type: String,
+        default: ""
+    },
+    bio: {
+        type: String,
+        default: ""
+    },
+    location: {
+        type: String,
+        default: ""
+    }
 
 }, { timestamps: true })
 

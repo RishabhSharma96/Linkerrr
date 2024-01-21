@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Handlee&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap') ;
+@import url('https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Handlee&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 .grapenuts {
     font-family: "Handlee", cursive;
@@ -10,6 +10,22 @@
     font-style: normal;
 }
 
-.poppins{
+.poppins {
     font-family: 'Poppins', sans-serif;
+}
+
+.radio-togglers {
+    @apply p-1 bg-gray-200 inline-flex cursor-pointer;
+}
+
+.radio-togglers div {
+    @apply p-2 px-4 text-gray-500 block flex items-center gap-2 cursor-pointer;
+}
+
+.radio-togglers input[type="radio"] {
+    @apply hidden;
+}
+
+.radio-togglers input[type="radio"]:checked+div {
+    @apply bg-white text-blue-600 font-bold;
 }

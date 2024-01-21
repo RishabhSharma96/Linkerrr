@@ -6,6 +6,7 @@ import Image from 'next/image'
 import UsernameForm from '@/forms/UsernameForm'
 import { Page } from '@/models/Page'
 import mongoose from 'mongoose'
+import AccountTopper from '@/components/AccountTopper'
 
 const AccountPage = async (req) => {
 
@@ -21,7 +22,7 @@ const AccountPage = async (req) => {
     if (pageInfoWithEmail) {
         return (
             <div>
-                your page is {pageInfoWithEmail?.uri}
+                <AccountTopper page={pageInfoWithEmail} session={session} />
             </div>
         )
     }

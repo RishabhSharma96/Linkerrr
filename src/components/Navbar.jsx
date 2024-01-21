@@ -35,7 +35,7 @@ const Navbar = async () => {
       {!session ?
         <div className='flex gap-3 '>
           <Link href={'/login'}><button className='bg-purple-700 font-bold text-white rounded-md text-lg h-[2.5rem] w-[5rem] shadow-lg'>Login</button></Link>
-          <Link href={'/create-account'}><button className='bg-purple-700 font-bold text-white rounded-md text-lg h-[2.5rem] w-[10.5rem] shadow-2xl'>Create Account</button></Link>
+          <button htmlFor="usernameinput" className='bg-purple-700 font-bold text-white rounded-md text-lg h-[2.5rem] w-[10.5rem] shadow-2xl'>Create Account</button>
         </div> :
         <div className='flex gap-3 '>
           <Link href={'/account'}><button className='font-bold text-purple-700 rounded-lg text-lg h-[2.5rem] w-[10rem] shadow-md'>
