@@ -11,12 +11,12 @@ const AccountSidebar = ({image}) => {
     const url = usePathname()
 
     return (
-        <div>
+        <div className=''>
             <div className="w-[15rem] bg-white h-[100vh] flex flex-col items-center pt-10 gap-3 justify-between p-5 ">
                 <div>
                     <span className="text-purple-700 font-extrabold text-4xl mb-4">My Space</span>
-                    <div className="rounded-full overflow-hidden aspect-square w-32 mx-auto mt-5">
-                        <Image src={image} width={256} height={256} alt="profile pic" />
+                    <div className="rounded-full overflow-hidden aspect-square w-36 mx-auto mt-5 p-2 border-4 border-gray-200">
+                        <Image src={image} width={256} height={256} alt="profile pic" className='aspect-square bg-cover'/>
                     </div>
 
                     <div className="flex flex-col gap-3 mt-8">

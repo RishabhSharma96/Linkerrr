@@ -2,10 +2,11 @@
 
 import { Loginoptions } from "@/app/api/auth/[...nextauth]/route"
 import { Page } from "@/models/Page"
+import { User } from "@/models/User"
 import mongoose from "mongoose"
 import { getServerSession } from "next-auth"
 
-const UpdateUserDetails = async (username, userlocation, userbio, userbgType, usercolor, imageURL) => {
+const UpdateUserDetails = async (username, userlocation, userbio, userbgType, usercolor, imageURL, avatar) => {
 
     mongoose.connect(process.env.MONGODB_URI)
 
@@ -22,6 +23,15 @@ const UpdateUserDetails = async (username, userlocation, userbio, userbgType, us
             bgColor: usercolor,
             bgImageUrl: imageURL
         })
+
+        if (avatar.includes("cloudinary")) {
+            await User.updateOne({
+                email: session?.user?.email
+            }, {
+                image: avatar
+            })
+        }
+
         return true;
     }
     return false;

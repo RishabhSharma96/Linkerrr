@@ -7,6 +7,7 @@ import UsernameForm from '@/forms/UsernameForm'
 import { Page } from '@/models/Page'
 import mongoose from 'mongoose'
 import AccountTopper from '@/components/AccountTopper'
+import LinkButttons from '@/components/LinkButttons'
 
 const AccountPage = async (req) => {
 
@@ -21,8 +22,9 @@ const AccountPage = async (req) => {
 
     if (pageInfoWithEmail) {
         return (
-            <div>
+            <div className='bg-gray-200 p-4'>
                 <AccountTopper page={pageInfoWithEmail} session={session} />
+                <LinkButttons />
             </div>
         )
     }
