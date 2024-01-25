@@ -24,7 +24,7 @@ const AccountPage = async (req) => {
         return (
             <div className='bg-gray-200 p-4'>
                 <AccountTopper page={pageInfoWithEmail} session={session} />
-                <LinkButttons />
+                <LinkButttons page={pageInfoWithEmail} session={session} />
             </div>
         )
     }

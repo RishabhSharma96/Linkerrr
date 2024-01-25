@@ -34,6 +34,10 @@ const PageSchema = new Schema({
     bgImageUrl: {
         type: String,
         default: ""
+    },
+    buttons: {
+        type: Object,
+        default: {}
     }
 
 }, { timestamps: true })
