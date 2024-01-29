@@ -65,7 +65,7 @@ const AccountTopper = ({ page, session }) => {
         <div className='bg-gray-200'>
 
             <form action={saveUserDatails} className='bg-white '>
-                <div className={'w-full h-[16rem] p-3 bg-cover bg-center'} style={
+                <div className={'w-full h-[16rem] p-3 bg-cover bg-center bg-gray-500'} style={
                     bgType === 'Color' ? { backgroundColor: bgColor } : { backgroundImage: `url(${imageURL})` }
                 }>
                     <RadioButtons
@@ -96,26 +96,26 @@ const AccountTopper = ({ page, session }) => {
                 </div>
                 <div className='flex flex-col bg-white p-4 mt-[-7rem] gap-3'>
                     <div className='flex flex-wrap gap-3'>
-                        <span className='font-bold text-purple-800'>DISPLAY NAME</span>
+                        <span className='font-bold text-purple-800 mb-[-10px]'>DISPLAY NAME:</span>
                         <input
-                            className='w-[100%] h-[3rem] focus:outline-none text-xl pl-4 text-gray-500 font-semibold placeholder:italic placeholder:font-normal rounded-lg bg-gray-100 border-2 border-purple-200'
+                            className='w-[100%] h-[3rem] focus:outline-none text-xl pl-4 text-gray-500 font-semibold placeholder:italic placeholder:font-normal  bg-gray-100 border-2 border-purple-200'
                             type="text"
                             placeholder="eg. John Doe"
                             name='username'
                             defaultValue={page.name}
                         />
-                        <span className='font-bold text-purple-800'>LOCATION</span>
+                        <span className='font-bold text-purple-800 mb-[-10px]'>LOCATION:</span>
                         <input
-                            className='w-[100%] h-[3rem] focus:outline-none text-xl pl-4 text-gray-500 font-semibold placeholder:italic placeholder:font-normal rounded-lg bg-gray-100 border-2 border-purple-200'
+                            className='w-[100%] h-[3rem] focus:outline-none text-xl pl-4 text-gray-500 font-semibold placeholder:italic placeholder:font-normal bg-gray-100 border-2 border-purple-200'
                             type="text"
                             placeholder="eg. Seattle, New York"
                             defaultValue={page.location}
                             name='location'
                         />
                     </div>
-                    <span className='font-bold text-purple-800 '>BIO</span>
+                    <span className='font-bold text-purple-800  mb-[-10px]'>BIO:</span>
                     <input
-                        className='w-[100%] h-[3rem] focus:outline-none text-xl pl-4 text-gray-500 font-semibold placeholder:italic placeholder:font-normal rounded-lg bg-gray-100 border-2 border-purple-200'
+                        className='w-[100%] h-[3rem] focus:outline-none text-xl pl-4 text-gray-500 font-semibold placeholder:italic placeholder:font-normal  bg-gray-100 border-2 border-purple-200'
                         type="text"
                         placeholder="My Hobbies include ..."
                         defaultValue={page.bio}

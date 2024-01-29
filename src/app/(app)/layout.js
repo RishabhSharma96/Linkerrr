@@ -4,6 +4,7 @@ import { getServerSession } from "next-auth";
 import { Loginoptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import AccountSidebar from "@/components/AccountSidebar";
+import { Page } from "@/models/Page";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,6 +16,7 @@ export const metadata = {
 export default async function AppLayout({ children }) {
 
   const session = await getServerSession(Loginoptions)
+  const pageInfoWithEmail = await Page.findOne({ owner: session?.user?.email })
 
   if (!session) {
     return redirect("/")
@@ -26,7 +28,7 @@ export default async function AppLayout({ children }) {
 
         <div className="flex">
           <div className="fixed"> 
-            <AccountSidebar image={session?.user?.image} />
+            <AccountSidebar image={session?.user?.image} page={pageInfoWithEmail}/>
           </div>
 
           <div className="pl-[15rem] bg-gray-200 w-full h-[100vh]">

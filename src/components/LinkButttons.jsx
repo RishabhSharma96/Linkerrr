@@ -48,18 +48,18 @@ const LinkButttons = ({ page, session }) => {
 
     return (
         <form action={UpdateLinkButtons} className='bg-white mt-5 p-4 pt-7 pb-7'>
-            <span className='font-bold uppercase text-purple-800 text-2xl m-3'>Add Links</span>
+            <span className='font-bold uppercase text-purple-800 text-2xl m-3'>Add Contact Details</span>
 
             {addedButton.length > 0 &&
                 <div className='flex flex-col mt-2'>
-                    <ReactSortable list={addedButton} setList={setAddedButton}>
+                    <ReactSortable list={addedButton} setList={setAddedButton} handle=".handle">
                         {addedButton.map(btn => {
                             return (
                                 <div key={btn.key} className='flex m-2 h-[3rem]'>
                                     <span onClick={() => removeButton(btn)} className='bg-red-600 flex items-center justify-center pr-2 pl-2 text-gray-200 cursor-pointer'><FontAwesomeIcon className='h-5 w-5' icon={faMinus} /></span>
-                                    <span className='flex gap-1 w-[130px] items-center pl-3 bg-purple-400 font-bold text-gray-900 '><FontAwesomeIcon key={btn.key} className='h-5 w-5' icon={btn.icon} />
+                                    <span className='flex gap-1 w-[130px] items-center pl-3 bg-purple-400 font-bold text-gray-900 handle'><FontAwesomeIcon key={btn.key} className='h-5 w-5' icon={btn.icon} />
                                         {btn.label}</span>
-                                    <input name={btn.label} className="border-2 border-purple-200 w-full rounded-md rounded-l-none focus:outline-none pl-4 font-bold text-xl text-gray-600 placeholder:italic placeholder:font-normal bg-gray-100" type="text" placeholder={`${btn.placeholder}`} defaultValue={page.buttons[btn.label]} />
+                                    <input name={btn.label} className="border-2 border-purple-200 w-full focus:outline-none pl-4 font-bold text-xl text-gray-600 placeholder:italic placeholder:font-normal bg-gray-100" type="text" placeholder={`${btn.placeholder}`} defaultValue={page.buttons[btn.label]} />
                                 </div>
                             )
                         })}
@@ -67,7 +67,7 @@ const LinkButttons = ({ page, session }) => {
                 </div>
             }
 
-            {addedButton.length > 0 && <span className='text-green-600'>Press and Hold to reorder items</span>}
+            {addedButton.length > 0 && <span className='text-green-600 w-full flex justify-end pr-3'>Press and Hold to reorder items</span>}
             {addedButton.length > 0 && <hr className='mt-2 bg-purple-200 h-[2px] mb-[-7px]' />}
 
             {avalaibleButtons.length > 0 && <div className='flex flex-wrap gap-3 mt-4 p-2'>

@@ -8,6 +8,7 @@ import { Page } from '@/models/Page'
 import mongoose from 'mongoose'
 import AccountTopper from '@/components/AccountTopper'
 import LinkButttons from '@/components/LinkButttons'
+import ExtraLinks from '@/components/ExtraLinks'
 
 const AccountPage = async (req) => {
 
@@ -25,6 +26,7 @@ const AccountPage = async (req) => {
             <div className='bg-gray-200 p-4'>
                 <AccountTopper page={pageInfoWithEmail} session={session} />
                 <LinkButttons page={pageInfoWithEmail} session={session} />
+                <ExtraLinks page={pageInfoWithEmail} session={session} />
             </div>
         )
     }

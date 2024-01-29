@@ -5,8 +5,9 @@ import LogoutButton from './LogoutButton'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
+import { Page } from '@/models/Page'
 
-const AccountSidebar = ({image}) => {
+const AccountSidebar = ({ image, page }) => {
 
     const url = usePathname()
 
@@ -16,9 +17,18 @@ const AccountSidebar = ({image}) => {
                 <div>
                     <span className="text-purple-700 font-extrabold text-4xl mb-4">My Space</span>
                     <div className="rounded-full overflow-hidden aspect-square w-36 mx-auto mt-5 p-2 border-4 border-gray-200">
-                        <Image src={image} width={256} height={256} alt="profile pic" className='aspect-square bg-cover'/>
+                        <Image src={image} width={256} height={256} alt="profile pic" className='aspect-square bg-cover' />
                     </div>
 
+                    <div >
+                        <Link target="_blank" href={'/' + page.uri} className='flex gap-2 items-center justify-center mt-4'>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7 text-purple-600">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
+                            </svg>
+                            <span className='text-purple-500 font-extrabold text-2xl'>/</span>
+                            <span className='text-purple-500 font-bold text-xl'>{page.uri}</span>
+                        </Link>
+                    </div>
                     <div className="flex flex-col gap-3 mt-8">
 
                         <Link href={"/account"}>
