@@ -9,7 +9,7 @@ import { getServerSession } from "next-auth";
 const GrabUsername = async (formData) => {
     const linkerrrUsername = formData.get("username");
     mongoose.connect(process.env.MONGODB_URI)
-    
+
     const session = await getServerSession(Loginoptions)
 
     const doesUserExist = await Page.findOne({ uri: linkerrrUsername })
@@ -20,8 +20,11 @@ const GrabUsername = async (formData) => {
     else {
         return await Page.create({
             uri: linkerrrUsername,
-            owner: session?.user?.email
+            owner: session?.user?.email,
         })
+        // return await Page.updateOne({ uri: linkerrrUsername }, {
+        //     buttons: {}
+        // })
     }
 }
 

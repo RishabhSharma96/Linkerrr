@@ -2,7 +2,7 @@
 
 import UpdateUserLinks from '@/actions/UpdateUserLinks';
 import { faDiscord, faFacebook, faGithub, faInstagram, faTelegram, faTiktok, faWhatsapp, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope, faMinus, faMobile, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faGripLines, faMinus, faMobile, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import { ReactSortable } from 'react-sortablejs';
@@ -23,7 +23,7 @@ const allButtons = [
 
 const LinkButttons = ({ page, session }) => {
 
-    const pageButtonKeys = Object?.keys(page?.buttons)
+    const pageButtonKeys = Object.keys(page.buttons || {})
     const pageButtonValues = pageButtonKeys.map(l => allButtons.find(b => b.label === l))
 
     const [addedButton, setAddedButton] = useState(pageButtonValues)
@@ -57,9 +57,9 @@ const LinkButttons = ({ page, session }) => {
                             return (
                                 <div key={btn.key} className='flex m-2 h-[3rem]'>
                                     <span onClick={() => removeButton(btn)} className='bg-red-600 flex items-center justify-center pr-2 pl-2 text-gray-200 cursor-pointer'><FontAwesomeIcon className='h-5 w-5' icon={faMinus} /></span>
-                                    <span className='flex gap-1 w-[130px] items-center pl-3 bg-purple-400 font-bold text-gray-900 handle'><FontAwesomeIcon key={btn.key} className='h-5 w-5' icon={btn.icon} />
-                                        {btn.label}</span>
-                                    <input name={btn.label} className="border-2 border-purple-200 w-full focus:outline-none pl-4 font-bold text-xl text-gray-600 placeholder:italic placeholder:font-normal bg-gray-100" type="text" placeholder={`${btn.placeholder}`} defaultValue={page.buttons[btn.label]} />
+                                    <span className='flex gap-1 w-[140px] items-center pl-2 bg-purple-400 font-bold text-gray-900 handle'><FontAwesomeIcon key={btn?.key} className='h-5 w-5' icon={btn?.icon} />
+                                        {btn?.label}</span>
+                                    <input name={btn.label} className="border-2 border-purple-200 w-full focus:outline-none pl-4 font-bold text-xl text-gray-600 placeholder:italic placeholder:font-normal bg-gray-100" type="text" placeholder={btn.placeholder} defaultValue={page.buttons ? page.buttons[btn.label] : ""} />
                                 </div>
                             )
                         })}

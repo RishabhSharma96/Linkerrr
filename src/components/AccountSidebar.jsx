@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react'
+import React, { useState } from 'react'
 import LogoutButton from './LogoutButton'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -10,14 +10,21 @@ import { Page } from '@/models/Page'
 const AccountSidebar = ({ image, page }) => {
 
     const url = usePathname()
+    const [toggle, setToggle] = useState(false)
 
     return (
         <div className=''>
-            <div className="w-[15rem] bg-white h-[100vh] flex flex-col items-center pt-10 gap-3 justify-between p-5 ">
+            <div className='md:hidden block left-0'>
+                <label onClick={() => setToggle(!toggle)} className='bg-white p-3 font-bold flex gap-2 shadow border-1 border-gray-200'>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </label>
+            </div>
+            <div className={toggle ? "flex " + " w-[15rem] bg-white h-[95vh]  flex-col items-center pt-10 gap-3 justify-between p-5 z-20 transition-all" : "hidden md:flex" + " w-[15rem] bg-white h-[100vh]  flex-col items-center pt-10 gap-3 justify-between p-5 z-20 transition-all"}>
                 <div>
                     <span className="text-purple-700 font-extrabold text-4xl mb-4">My Space</span>
-                    <div className="rounded-full overflow-hidden aspect-square w-36 mx-auto mt-5 p-2 border-4 border-gray-200">
-                        <Image src={image} width={256} height={256} alt="profile pic" className='aspect-square bg-cover' />
+                    <div className="rounded-full overflow-hidden aspect-square w-36 mx-auto mt-5 p-2 border-4 border-gray-200 bg-cover bg-center" style={{ backgroundImage: `url(${image})` }}>
                     </div>
 
                     <div >

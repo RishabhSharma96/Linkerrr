@@ -27,12 +27,12 @@ export default async function AppLayout({ children }) {
     <html lang="en">
       <body className="poppins">
 
-        <div className={pageInfoWithEmail ? "flex " : "flex flex-col"}>
+        <div className={pageInfoWithEmail ? " " : "flex flex-col"}>
           <div className={pageInfoWithEmail ? "fixed" : ""}>
-            {pageInfoWithEmail ? <AccountSidebar image={session?.user?.image} page={pageInfoWithEmail} /> : <Navbar />}
+            {pageInfoWithEmail ? <div className=""><AccountSidebar image={session?.user?.image} page={pageInfoWithEmail} /></div> : <Navbar />}
           </div>
 
-          <div className={pageInfoWithEmail ? "pl-[15rem]" : "" + "bg-gray-200 w-full h-full"}>
+          <div className={pageInfoWithEmail ? "md:pl-[15rem]" : "" + "bg-gray-200 w-full h-full"}>
             {children}
           </div>
         </div>

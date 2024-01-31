@@ -66,7 +66,7 @@ const UserPage = async ({ params }) => {
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                             </svg>
                             {UserPage.location}</span>
-                        <span className=' text-purple-700 font-bold text-xl'>{UserPage.bio}</span>
+                        <span className=' text-purple-700 font-bold text-xl text-center'>{UserPage.bio}</span>
                         <div className='flex gap-2 mt-2 flex-wrap'>
                             {Object.keys(UserPage.buttons).map(key => (
                                 <div key={key} className='border-2 border-purple-400 p-2 rounded-full'>
