@@ -17,7 +17,7 @@ const LoginPage = () => {
     return (
         <div className="h-[91vh] w-full bg-gray-200 flex items-center justify-center">
 
-            <div className="flex justify-center items-center w-[40%] pl-12">
+            <div className="hidden md:flex justify-center items-center w-[40%] pl-12">
                 <Image
                     src={'/images/LinkerrrLoginSider.png'}
                     height={1300}
@@ -27,11 +27,11 @@ const LoginPage = () => {
             </div>
 
             <div
-                className="flex flex-col items-center justify-center gap-2 w-[60%]">
+                className="flex flex-col items-center justify-center gap-2 w-[90%] md:w-[60%]">
                 <div className='mix-blend-multiply'>
                     <Image src="/images/LinkerrrLogo.png" width={250} height={250} alt="Company logo" />
                 </div>
-                <span className="text-purple-700 font-bold text-lg flex justify-center items-center">Linkerrr works seemingly fast with Google Accounts</span>
+                <span className="text-purple-700 font-bold text-lg flex justify-center items-center text-center">Linkerrr works seemingly fast with Google Accounts</span>
                 <LoginButton />
             </div>
         </div >

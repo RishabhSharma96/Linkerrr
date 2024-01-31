@@ -23,7 +23,7 @@ const allButtons = [
 
 const LinkButttons = ({ page, session }) => {
 
-    const pageButtonKeys = Object.keys(page.buttons)
+    const pageButtonKeys = Object?.keys(page?.buttons)
     const pageButtonValues = pageButtonKeys.map(l => allButtons.find(b => b.label === l))
 
     const [addedButton, setAddedButton] = useState(pageButtonValues)

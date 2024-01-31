@@ -5,6 +5,7 @@ import { Loginoptions } from "../api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import AccountSidebar from "@/components/AccountSidebar";
 import { Page } from "@/models/Page";
+import Navbar from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,12 +27,12 @@ export default async function AppLayout({ children }) {
     <html lang="en">
       <body className="poppins">
 
-        <div className="flex">
-          <div className="fixed"> 
-            <AccountSidebar image={session?.user?.image} page={pageInfoWithEmail}/>
+        <div className={pageInfoWithEmail ? "flex " : "flex flex-col"}>
+          <div className={pageInfoWithEmail ? "fixed" : ""}>
+            {pageInfoWithEmail ? <AccountSidebar image={session?.user?.image} page={pageInfoWithEmail} /> : <Navbar />}
           </div>
 
-          <div className="pl-[15rem] bg-gray-200 w-full h-full">
+          <div className={pageInfoWithEmail ? "pl-[15rem]" : "" + "bg-gray-200 w-full h-full"}>
             {children}
           </div>
         </div>

@@ -35,15 +35,17 @@ const HeroForm = ({ user_name }) => {
     }
 
     return (
-        <form className="w-[80%]">
-            <span className="pl-3 pt-[1.1rem] pb-[1.1rem] bg-white text-lg text-purple-900 rounded-l-lg font-bold">linkerrr.to/</span>
-            <input
-                type="text"
-                placeholder="linkerrrID"
-                className="h-[3.5rem] outline-none text-lg text-gray-400 w-[200px]"
-                onChange={e => setUsername(e.target.value)}
-            />
-            <button type="submit" onClick={handleCreateAccount} className="h-[3.5rem] bg-purple-700 text-white font-bold w-[12rem] text-lg rounded-r-lg hover:bg-white hover:text-purple-700 : hover:border-purple-700 hover:border-2 transition-all">Get Started</button>
+        <form className="w-[80%] flex flex-col items-center justify-center md:flex md:flex-row md:items-start md:justify-normal">
+            <div>
+                <span className="pl-2 pt-[1.1rem] pb-[1.1rem] bg-white text-lg text-purple-900 rounded-l-lg font-bold">linkerrr.to/</span>
+                <input
+                    type="text"
+                    placeholder="linkerrrID"
+                    className="h-[3.5rem] outline-none rounded-r-lg md:rounded-r-none text-lg text-gray-400 w-[150px] md:w-[200px]"
+                    onChange={e => setUsername(e.target.value)}
+                />
+            </div>
+            <button type="submit" onClick={handleCreateAccount} className="h-[3.5rem] bg-purple-700 text-white font-bold w-[12rem] text-lg rounded-lg md:rounded-r-lg md:rounded-l-none hover:bg-white hover:text-purple-700 : hover:border-purple-700 hover:border-2 transition-all mt-4 md:mt-0">Get Started</button>
         </form>
     )
 }
