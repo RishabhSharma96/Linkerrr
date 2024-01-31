@@ -31,7 +31,7 @@ export default async function AppLayout({ children }) {
             <AccountSidebar image={session?.user?.image} page={pageInfoWithEmail}/>
           </div>
 
-          <div className="pl-[15rem] bg-gray-200 w-full h-[100vh]">
+          <div className="pl-[15rem] bg-gray-200 w-full h-full">
             {children}
           </div>
         </div>

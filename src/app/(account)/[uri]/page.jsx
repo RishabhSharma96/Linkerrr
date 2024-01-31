@@ -1,5 +1,6 @@
 import { Page } from '@/models/Page'
 import { User } from '@/models/User'
+import { Event } from '@/models/Event'
 import { faDiscord, faFacebook, faGithub, faInstagram, faTelegram, faTiktok, faWhatsapp, faYoutube } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope, faMobile } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -27,6 +28,12 @@ const UserPage = async ({ params }) => {
     mongoose.connect(process.env.MONGODB_URI)
     const UserPage = await Page.findOne({ uri: uri })
     const UserDetails = await User.findOne({ email: UserPage.owner })
+
+    await Event.create({
+        uri: uri,
+        eventType: "view",
+        page: uri
+    })
 
     const redirectLink = (key, val) => {
         if (key === 'mobile') {
@@ -63,7 +70,8 @@ const UserPage = async ({ params }) => {
                         <div className='flex gap-2 mt-2 flex-wrap'>
                             {Object.keys(UserPage.buttons).map(key => (
                                 <div key={key} className='border-2 border-purple-400 p-2 rounded-full'>
-                                    <Link href={redirectLink(key, UserPage.buttons[key])}>
+                                    <Link
+                                        href={redirectLink(key, UserPage.buttons[key])}>
                                         <FontAwesomeIcon className='h-6 w-6 text-gray-800' icon={allButtonsIcons[key]} />
                                     </Link>
                                 </div>
@@ -75,12 +83,15 @@ const UserPage = async ({ params }) => {
                     {UserPage.links.map(link => {
                         return (
                             <div key={link.key} className='flex bg-slate-300 p-2 h-[6rem] w-[310px]'>
-                                    {/* {JSON.stringify(link.linkImage)} */}
-                                <Link className='flex' href={link.url}>
+                                {/* {JSON.stringify(link.linkImage)} */}
+                                <Link
+                                    target='_blank'
+                                    ping={`/api/click?url=${btoa(link.url)}&page=${uri}`}
+                                    className='flex' href={link.url}>
                                     <div className='h-[5rem] w-[7rem] bg-cover bg-center' style={link.url !== "" ? { backgroundImage: `url(${link.linkImage})` } : { backgroundImage: `url(${linkImageofNull})` }}></div>
                                     <div className='flex flex-col w-[11.5rem] items-center justify-center'>
-                                        <span className='font-extrabold text-lg text-purple-800 ml-3'>{link.title.slice(0,15)}{link.title.length>15 ? "..." : ''}</span>
-                                        <span className='font-bold text-purple-800 ml-3 break-words flex text-center'>{link.subtitle.slice(0,30)}{link.subtitle.length>30 ? "..." : ''}</span>
+                                        <span className='font-extrabold text-lg text-purple-800 ml-3'>{link.title.slice(0, 15)}{link.title.length > 15 ? "..." : ''}</span>
+                                        <span className='font-bold text-purple-800 ml-3 break-words flex text-center'>{link.subtitle.slice(0, 30)}{link.subtitle.length > 30 ? "..." : ''}</span>
                                     </div>
                                 </Link>
                             </div>
