@@ -24,12 +24,6 @@ const Navbar = async () => {
             />
           </Link>
         </div>
-
-        <div className='ml-6 flex gap-5 font-bold text-lg text-purple-700'>
-          <Link href={'/about'}>About</Link>
-          <Link href={'/pricing'}>Pricing</Link>
-          <Link href={'/contact'}>Contact</Link>
-        </div>
       </div>
 
       {!session ?
