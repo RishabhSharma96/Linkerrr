@@ -62,10 +62,10 @@ const AccountTopper = ({ page, session }) => {
     }
 
     return (
-        <div className='bg-gray-200'>
+        <div className='bg-gray-200 -z-10'>
 
             <form action={saveUserDatails} className='bg-white '>
-                <div className={'w-full h-[16rem] p-3 bg-cover bg-center bg-gray-500'} style={
+                <div className={'w-full h-[16rem] p-3 bg-cover bg-center bg-gray-500 '} style={
                     bgType === 'Color' ? { backgroundColor: bgColor } : { backgroundImage: `url(${imageURL})` }
                 }>
                     <RadioButtons
@@ -94,7 +94,7 @@ const AccountTopper = ({ page, session }) => {
                         </svg>
                     </label>
                 </div>
-                <div className='flex flex-col bg-white p-4 mt-[-7rem] gap-3'>
+                <div className='flex flex-col bg-white p-4 mt-[-5rem] md:mt-[-7rem] gap-3'>
                     <div className='flex flex-wrap gap-3'>
                         <span className='font-bold text-purple-800 mb-[-10px]'>DISPLAY NAME:</span>
                         <input

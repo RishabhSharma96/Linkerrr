@@ -14,7 +14,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body{
+body {
     font-family: poppins;
 }
 
@@ -32,4 +32,8 @@ body{
 
 .radio-togglers input[type="radio"]:checked+div {
     @apply bg-white text-blue-600 font-bold;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
 }

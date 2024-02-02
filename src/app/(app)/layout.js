@@ -18,6 +18,7 @@ export default async function AppLayout({ children }) {
 
   const session = await getServerSession(Loginoptions)
   const pageInfoWithEmail = await Page.findOne({ owner: session?.user?.email })
+  
 
   if (!session) {
     return redirect("/")

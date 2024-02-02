@@ -3,8 +3,13 @@
 import React from 'react'
 import { addDays, differenceInDays, formatISO9075, parseISO } from "date-fns";
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import { redirect } from 'next/navigation';
 
 const Chart = ({ data }) => {
+
+    if (Object.keys(data).length === 0) {
+        return redirect("/account")
+    }
 
     const xLabelKey = Object.keys(data[0]).find(key => key !== 'date')
 
