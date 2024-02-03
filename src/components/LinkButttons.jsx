@@ -5,6 +5,7 @@ import { faDiscord, faFacebook, faGithub, faInstagram, faTelegram, faTiktok, faW
 import { faEnvelope, faGripLines, faMinus, faMobile, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
+import toast from 'react-hot-toast';
 import { ReactSortable } from 'react-sortablejs';
 
 const allButtons = [
@@ -38,6 +39,7 @@ const LinkButttons = ({ page, session }) => {
 
     const UpdateLinkButtons = async (formData) => {
         await UpdateUserLinks(formData)
+        toast.success('User Buttons Updated!')
     }
 
     const removeButton = (btn) => {

@@ -8,12 +8,6 @@ import { redirect } from 'next/navigation'
 
 const LoginPage = () => {
 
-    // const session = getServerSession(Loginoptions)
-
-    // if (session) {
-    //     return redirect('/account')
-    // }
-
     return (
         <div className="h-[91vh] w-full bg-gray-200 flex items-center justify-center">
 

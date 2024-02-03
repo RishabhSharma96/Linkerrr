@@ -5,6 +5,7 @@ import RadioButtons from './RadioButtons'
 import Image from 'next/image'
 import UpdateUserDetails from '@/actions/UpdateUserDetails'
 import axios from 'axios'
+import toast from 'react-hot-toast'
 
 const AccountTopper = ({ page, session }) => {
 
@@ -21,6 +22,8 @@ const AccountTopper = ({ page, session }) => {
         const usercolor = bgColor
 
         await UpdateUserDetails(username, userlocation, userbio, userbgType, usercolor, imageURL, avatar)
+
+        toast.success('Details Updated!')
     }
 
     const HandleFileUpload = async (e) => {

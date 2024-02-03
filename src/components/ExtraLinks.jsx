@@ -4,6 +4,7 @@ import updateExtraLinks from '@/actions/UpdateExtraLinks';
 import axios from 'axios';
 import Image from 'next/image';
 import React, { useState } from 'react'
+import toast from 'react-hot-toast';
 import { ReactSortable } from 'react-sortablejs';
 
 const ExtraLinks = ({ page, session }) => {
@@ -24,6 +25,7 @@ const ExtraLinks = ({ page, session }) => {
 
     const saveUserLinks = async () => {
         await updateExtraLinks(links)
+        toast.success('Links Updated!')
     }
 
     const handlefileUpload = async (e, linkKey) => {

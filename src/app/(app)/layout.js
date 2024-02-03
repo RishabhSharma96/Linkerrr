@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import AccountSidebar from "@/components/AccountSidebar";
 import { Page } from "@/models/Page";
 import Navbar from "@/components/Navbar";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +28,10 @@ export default async function AppLayout({ children }) {
   return (
     <html lang="en">
       <body className="poppins">
+      <Toaster
+          position="top-right"
+          reverseOrder={false}
+        />
 
         <div className={pageInfoWithEmail ? " " : "flex flex-col"}>
           <div className={pageInfoWithEmail ? "fixed" : ""}>
